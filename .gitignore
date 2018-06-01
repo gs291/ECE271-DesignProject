@@ -1,2 +1,4 @@
+#This ignores all kind of files
 *
+#execpt any sv files
 !*.sv
