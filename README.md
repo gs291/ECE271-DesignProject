@@ -1,5 +1,7 @@
 # ECE271-DesignProject
 
+**_Only add SystemVerilog files to the repository._**
+
 ## Desingers
 
 Matthew Guo, Haolin Liu, Cody McCall, Gregory Sanchez
