@@ -19,4 +19,4 @@ Matthew Guo, Haolin Liu, Cody McCall, Gregory Sanchez
 
 Below is a rough estimate of the entire design project
 
-![alt text](https://github.com/gs291/ECE271-DesignProject/blob/master/topLevelDiagram.pdf)
+![alt text](https://github.com/gs291/ECE271-DesignProject/blob/master/topLevelDiagram.png)
