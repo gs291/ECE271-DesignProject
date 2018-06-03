@@ -25,7 +25,7 @@ module button_decoder(
 	parameter select = 8'b11110111;
 	parameter up = 8'b11101111;
 	parameter down = 8'b11011111;
-	parameter left = 8'b101111111;
+	parameter left = 8'b10111111;
 	parameter right = 8'b01111111;
 	parameter A = 8'b01111110;
 
