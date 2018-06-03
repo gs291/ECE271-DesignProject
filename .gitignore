@@ -2,3 +2,5 @@
 *
 #execpt any sv files
 !*.sv
+!/IR_Decoder/
+!/PS2_Decoder/
