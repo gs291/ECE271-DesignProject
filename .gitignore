@@ -2,6 +2,8 @@
 *
 #execpt any sv files
 !*.sv
+!*.txt
 !/IR_Decoder/
 !/PS2_Decoder/
 !/Button_Decoder/
+!/PS2_Waveforms/

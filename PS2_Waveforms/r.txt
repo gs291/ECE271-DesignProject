@@ -1,0 +1,11 @@
+Time:-4.1e-05 with value of 0.134063
+Time:4.22e-05 with value of 4.13531
+Time:0.000126 with value of 0.165625
+Time:0.00021 with value of 4.07219
+Time:0.000293 with value of 4.44281
+Time:0.000377 with value of 0.168125
+Time:0.000461 with value of 4.41438
+Time:0.000544 with value of 0.19625
+Time:0.000628 with value of 0.138438
+Time:0.000711 with value of 4.4075
+Time:0.000795 with value of 4.22969
