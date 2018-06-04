@@ -15,7 +15,7 @@ input logic ps2_data_in, clk_15khz,
 output logic [15:0] ps2_data_out
 );
 
-logic [10:0} ps2_data_array;
+logic [7:0} ps2_data_array;
 
 	FSM ps2_FSM(
 	.clk(clk_15khz),
