@@ -8,13 +8,13 @@ Matthew Guo, Haolin Liu, Cody McCall, Gregory Sanchez
 
 ## Links
 
-Link to Overleaf LaTex editor: [TBA](https://www.overleaf.com/) 
+Link to Overleaf LaTex editor: [Our Report](https://www.overleaf.com/16768603scmjzkppfqsf)
 
 ## Tasks
 
-- [ ] Complete 272 Button Board Decoder
-- [ ] Incorporate clock modules
-- [ ] Complete Multiplexer with correct data output
+- [x] Complete 272 Button Board Decoder
+- [x] Incorporate clock modules
+- [x] Complete Multiplexer with correct data output
 - [ ] Complete PS/2 keyboard decoder
 - [ ] TBD.
 - [ ] TBD.
