@@ -33,6 +33,8 @@ always_comb
                 8'h1B: key_data_out[5] = 1'b1; // s for down
                 8'h23: key_data_out[6] = 1'b1; // d for right
                 8'h2B: key_data_out[7] = 1'b1; // f fro select 
+                8'h34: key_data_out[8] = 1'b1; // g for X
+                8'h35: key_data_out[9] = 1'b1; // y fro Y
             endcase
 
             key_fo = 0;
@@ -49,6 +51,8 @@ always_comb
                 8'h1B: key_data_out[5] = 1'b0; // s for down
                 8'h23: key_data_out[6] = 1'b0; // d for right
                 8'h2B: key_data_out[7] = 1'b0; // f fro select
+                8'h34: key_data_out[8] = 1'b0; // g for X
+                8'h35: key_data_out[9] = 1'b0; // y fro Y
             endcase
         end
 
