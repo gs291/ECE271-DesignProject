@@ -29,7 +29,7 @@ module ir_FSM(
 	logic [5:0] data_count;
 	
 	typedef enum logic [1:0] {IDLE, COLLECT, VERIFY} statetype;
-	statetype [2:0] state, nextstate;
+	statetype [1:0] state, nextstate;
 	
 	//clock divider
 	OSCH #("2.08") osc_int (	
