@@ -13,96 +13,105 @@
 
 module FSM(
 	
-	input logic clk,
-	input logic ps2_keypress,
-	input logic reset,
-	output logic [7:0] shift_register
+	input logic clk,						//clk input from the PS/2 Keyboard
+	input logic ps2_keypress,				//data input from the keyboard in serial communication
+	input logic reset,						//reset input from the keyboard
+	output logic [7:0] ps2_data_array		//parallel 8-bit data from the PS/2 Keyboard
 	
 	);
 	
-	logic [2:0] counter;
-	logic [7:0] shift_register;
+	logic [3:0] counter;			//counter to count to 8
+	logic [7:0] shift_register;		//shift register to store the 8-bit PS/2 data
+	logic parity;					//the 10th bit from the 11-bit input of the PS/2
 	
-	typedef enum {IDLE, START, COLLECT, VERIFY, STOP} statetype;
-	statetype state = IDLE;
-	statetype nextstate;
+	typedef enum logic [2:0]{IDLE, START, COLLECT, VERIFY, STOP} statetype;
+	statetype [2:0] state, nextstate;
 	
 	
 	
-	always_ff@(negedge clk, posedge reset)
-	
+	always_comb
 		begin
-			
 			if(reset) state <= IDLE;
 			else 	  state <= nextstate;
+		end		
 
-		
-		case(state)
+	always_ff@(negedge clk)
+		begin
 			
+			case(state)
+			
+				//idle state to wait for the clk signal
 				IDLE: 
 					begin
 						counter <= 0;
 						nextstate <= START;
 					end
-						
+				
+				//checks if the first PS/2 signal is 0
 				START:
-					if(!ps2_keypress) nextstate <= COLLECT;
-					else			  nextstate <= IDLE;
-					  
+				
+					begin
+						if(~ps2_keypress) nextstate <= COLLECT;
+						else			  nextstate <= IDLE;
+					end
+				
+				//collects the 8-bits of information based on the keypress
 				COLLECT: 
 				
 					begin
-						for(integer i = 1; i < 9; i = i + 1)
-							shift_register[i] <= shift_register[i - 1];
-							
 						
-						shift_register[0] <= ps2_keypress;						
-						counter <= counter + 1;
-						
+						//checks to see if all 8 bits are in the shift register
 						if(counter == 8)
-							nextstate <= VERIFY;
+							begin
+								parity = ps2_keypress;
+								nextstate <= VERIFY;	
+							end
+		
 						else
-							nextstate <= COLLECT;
+							begin
+								counter <= counter + 1;
+								shift_register <= {shift_register[6:0], ps2_keypress};
+								nextstate <= COLLECT;
+							end
 							
-					end		
-							
+					end
+
+				//checks to see that with the parity input, there are an odd number of 1's in the data
 				VERIFY: 
-					if(^shift_register != 1)
-						nextstate <= IDLE;
+				
+					begin
+						if(^shift_register ^ parity != 1)
+							nextstate <= IDLE;
 						
-					else
-						nextstate <= STOP;
+						else
+							nextstate <= STOP;
 						
+					end	
+					
+				//forwards this data to the PS/2 decoder	
 				STOP: 
 				
 					begin
-						if(!ps2_keypress)
-							ps2_data_array[0] <= shift_register[7];
-							ps2_data_array[1] <= shift_register[6];
-							ps2_data_array[2] <= shift_register[5];
-							ps2_data_array[3] <= shift_register[4];
-							ps2_data_array[4] <= shift_register[3];
-							ps2_data_array[5] <= shift_register[2];
-							ps2_data_array[6] <= shift_register[1];
-							ps2_data_array[7] <= shift_register[0];
-							shift_register <= 0;
+						if(~ps2_keypress)
 							nextstate <= IDLE;
+							
+						else
+							begin
+								ps2_data_array = shift_register;
+								nextstate <= IDLE;
+							end
 						
 							
 						
 					end
+					
+				default: nextstate <= IDLE;
 						
-			
-			
-			
-			
-			
-			
-			
-			endcase
+				endcase
 						
+			end
+		
 	
-		end
 	
 	
 endmodule
