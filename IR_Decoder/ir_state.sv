@@ -12,8 +12,8 @@
 ****************************************/
 module ir_FSM(
 	
-	input logic reset;
-	input logic ir_data;
+	input logic reset,
+	input logic ir_data,
 	output logic [31:0] ir_data_array
 	
 	);
