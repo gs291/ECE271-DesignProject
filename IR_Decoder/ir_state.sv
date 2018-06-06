@@ -14,7 +14,7 @@ module ir_FSM(
 	
 	input logic reset,
 	input logic ir_data,
-	output logic [31:0] ir_data_array
+	output logic [15:0] ir_data_array
 	
 	);
 	
@@ -29,7 +29,7 @@ module ir_FSM(
 	logic [5:0] data_count;
 	
 	typedef enum logic [1:0] {IDLE, COLLECT, VERIFY} statetype;
-	statetype [1:0] state, nextstate;
+	statetype [2:0] state, nextstate;
 	
 	//clock divider
 	OSCH #("2.08") osc_int (	
@@ -48,11 +48,13 @@ module ir_FSM(
 	
 	
 	
-	always_ff @ (posedge slow_clk)
+	//always_ff @ (posedge slow_clk)
+	always_comb
 		state <= nextstate;
 		
 		
-	always_comb
+	//always_comb
+	always_ff @ (posedge slow_clk)
 		begin
 			
 			case(state)
@@ -112,7 +114,12 @@ module ir_FSM(
 							
 							begin
 								data_count <= 0;
-								ir_data_array = shift_register;
+								ir_data_array[3:0] = shift_register[3:0];
+								ir_data_array[7:4] = shift_register[7:4];
+								ir_data_array[11:8] = shift_register[19:16];
+								ir_data_array[15:12] = shift_register[23:20];
+
+		
 								nextstate <= IDLE;
 								
 								
