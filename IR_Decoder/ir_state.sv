@@ -68,7 +68,7 @@ module ir_FSM(
 							begin
 								counter <= 0;
 								data_count <= 0;
-								nextstate <= START;
+								nextstate <= COLLECT;
 							end
 						else
 							nextstate <= IDLE;
@@ -101,6 +101,7 @@ module ir_FSM(
 							else
 								nextstate <= COLLECT;
 						end
+					end
 								
 				VERIFY:
 					begin
