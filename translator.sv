@@ -1,6 +1,5 @@
 module translator(input logic [15:0] data,
                   input logic SNES_latch,
-                  input logic sin,
                   input logic reset,
                   input logic SNES_clk,
                   output logic SNES_data,
@@ -12,7 +11,7 @@ if(reset)
 else if (SNES_latch)
   shift_register <= data;
 else
-  shift_register <= {shift_register[14:0], sin};
+  shift_register <= {shift_register[14:0], 1'bz};
 
 assign SNES_data = shift_register[15];
 
