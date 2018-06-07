@@ -12,17 +12,7 @@ Link to Overleaf LaTex editor: [Our Report](https://www.overleaf.com/16768603scm
 
 ## Tasks
 
-- [x] Complete 272 Button Board Decoder
-- [x] Incorporate clock modules
-- [x] Complete Multiplexer with correct data output
-- [ ] Complete PS/2 keyboard decoder
-- [ ] TBD.
-- [ ] TBD.
-- [ ] TBD.
-- [ ] TBD.
-
-## Top Level Diagram 
-
-Below is a rough estimate of the entire design project
-
-![alt text](https://github.com/gs291/ECE271-DesignProject/blob/master/topLevelDiagram.png)
+- [ ] Simulation of PS2 top
+- [ ] Simulation of IR state machine, IR decoder, and IR top
+- [ ] Simulation of Entire project
+- [ ] Finish Final Report!!!!!

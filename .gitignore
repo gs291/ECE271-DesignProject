@@ -4,6 +4,7 @@
 !*.sv
 !*.txt
 !*.do
+!*.md
 !/IR_Decoder/
 !/PS2_Decoder/
 !/Button_Decoder/
