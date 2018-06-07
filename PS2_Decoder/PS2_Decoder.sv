@@ -17,13 +17,23 @@ module Ps2_decoder(
     output logic [15:0] key_data_out
 );
 
-logic [7:0] key_fo;
+logic key_fo;
 
-always_comb 
-    if(key_byte == 8'hf0)
+logic initialize;
+
+always_comb
+    if(initialize != 0)
+      begin
+        key_data_out = 65535;
+        initialize = 0;
+      end
+    else if(key_byte == 8'hf0)
         key_fo = 1;
     else if (key_fo == 1)
         begin
+            //key_data_out = 65535; //Assigns output to all HIGH Values
+
+            //The SNES console requires the selected button to be LOW
             case(key_byte)
                 8'h1d: key_data_out[0] = 1'b1; // w for up
                 8'h24: key_data_out[1] = 1'b1; // e for A
@@ -32,7 +42,7 @@ always_comb
                 8'h1C: key_data_out[4] = 1'b1; // a for left
                 8'h1B: key_data_out[5] = 1'b1; // s for down
                 8'h23: key_data_out[6] = 1'b1; // d for right
-                8'h2B: key_data_out[7] = 1'b1; // f for select 
+                8'h2B: key_data_out[7] = 1'b1; // f for select
                 8'h34: key_data_out[8] = 1'b1; // g for X
                 8'h35: key_data_out[9] = 1'b1; // y for Y
             endcase
@@ -42,6 +52,9 @@ always_comb
         end
     else
         begin
+            //key_data_out = 65535; //Assigns output to all HIGH Values
+
+            //The SNES console requires the selected button to be LOW
             case(key_byte)
                 8'h1d: key_data_out[0] = 1'b0; // w for up
                 8'h24: key_data_out[1] = 1'b0; // e for A
