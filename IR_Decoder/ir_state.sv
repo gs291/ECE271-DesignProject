@@ -12,15 +12,16 @@
 ****************************************/
 module ir_FSM(
 	
-	input logic reset,
-	input logic ir_data,
-	output logic [15:0] ir_data_array
+	input logic reset,					//takes in potential reset value from IR
+	input logic ir_data,				//takes in the 1 or 0 value from the IR
+	input logic slow_clk,				//takes in the slow clk value (16kHz) from the top module
+	output logic [15:0] ir_data_array	//outputs the 16-bit hexadecimal value to the IR decoder
 	
 	);
 	
-	logic [7:0] clock_counter;
-	logic clk;
-	logic slow_clk;
+	//logic [7:0] clock_counter;
+	//logic clk;
+	//logic slow_clk;
 	
 	logic [7:0] counter;
 	
@@ -28,11 +29,11 @@ module ir_FSM(
 	
 	logic [5:0] data_count;
 	
-	typedef enum logic [1:0] {IDLE, COLLECT, VERIFY} statetype;
+	typedef enum logic [2:0] {IDLE, START, COLLECT, VERIFY} statetype;
 	statetype [2:0] state, nextstate;
 	
-	//clock divider
-	OSCH #("2.08") osc_int (	
+	//internal clock divider
+	/*OSCH #("2.08") osc_int (	
 		.STDBY(1'b0),			
 		.OSC(clk),				
 		.SEDSTDBY()				
@@ -46,7 +47,7 @@ module ir_FSM(
 	
 	assign slow_clk = clock_counter[6];
 	
-	
+	*/
 	
 	//always_ff @ (posedge slow_clk)
 	always_comb
@@ -59,12 +60,22 @@ module ir_FSM(
 			
 			case(state)
 				
+				//checks to see if the start signal is initiated
+				//if initiated, state machine will transition to the collect state
+				
 				IDLE:
+					begin
+						counter <= 0;
+						nextstate <= START;
+						
+					end
+				
+				START:
 					begin
 						if(ir_data) 
 							begin
 								counter <= counter + 1;
-								nextstate <= IDLE;
+								nextstate <= START;
 							end
 						else if(~ir_data && counter > 18)
 							begin
@@ -75,36 +86,65 @@ module ir_FSM(
 						else
 							nextstate <= IDLE;
 					end
-						
+				
+				//checks to see if the data recieved is a 1 or a 0
+				//based on the length of the count
 				COLLECT:
 					begin
-					if(ir_data)
+				/*	if(ir_data)
 						begin
 							counter <= counter + 1;
 							nextstate <= COLLECT;
 						end
 					else 
 						begin
-							if(counter > 17 && counter < 24)
+							if(counter >= 12 && counter < 24)
 								begin
 									counter <= 0;
 									shift_register <= {shift_register[30:0], 1'b1};
 									data_count <= data_count + 1;
 								end
-							else if (counter > 6 && counter < 16)
+							else if (counter > 6 && counter < 11)
 								begin
 									counter <= 0;
 									shift_register <= {shift_register[30:0], 1'b0};
 									data_count <= data_count + 1;
 								end
-								
+							*/
+							//checks to see if the shift register has 32-bits of data
 							if(data_count == 32)
 								nextstate <= VERIFY;
 							else
+								begin
+									
+									if(ir_data)
+						begin
+							counter <= counter + 1;
+							nextstate <= COLLECT;
+						end
+					else 
+						begin
+							counter <= 0;
+							if(counter >= 12 && counter < 27)
+								begin
+									counter <= 0;
+									shift_register <= {shift_register[30:0], 1'b1};
+									data_count <= data_count + 1;
+								end
+							else if (counter > 6 && counter < 11)
+								begin
+									counter <= 0;
+									shift_register <= {shift_register[30:0], 1'b0};
+									data_count <= data_count + 1;
+								end
+									
+									
+								end	
 								nextstate <= COLLECT;
 						end
 					end
-								
+				//the Verify state that checks to see if the addition of one nibble and the complement
+				//nibble equal 4'b1111 (F in hexadecimal)
 				VERIFY:
 					begin
 						if( shift_register[3:0]   ^ shift_register[11:8]  == 4'hF &&
@@ -114,6 +154,8 @@ module ir_FSM(
 							
 							begin
 								data_count <= 0;
+								
+								//outputs 16-bits, ignoring the complement of the nibble counterparts
 								ir_data_array[3:0] = shift_register[3:0];
 								ir_data_array[7:4] = shift_register[7:4];
 								ir_data_array[11:8] = shift_register[19:16];
