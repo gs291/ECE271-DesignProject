@@ -23,13 +23,13 @@ module ir_FSM(
 	//logic clk;
 	//logic slow_clk;
 	
-	logic [7:0] counter;
+	logic [10:0] counter;
 	
 	logic [31:0] shift_register;
 	
 	logic [5:0] data_count;
 	
-	typedef enum logic [2:0] {IDLE, START, COLLECT, VERIFY} statetype;
+	typedef enum logic [2:0] {IDLE, START, COLLECT, VERIFY, REPEAT} statetype;
 	statetype [2:0] state, nextstate;
 	
 	//internal clock divider
@@ -65,6 +65,7 @@ module ir_FSM(
 				
 				IDLE:
 					begin
+						ir_data_array = 16'h0000;
 						counter <= 0;
 						nextstate <= START;
 						
@@ -132,7 +133,7 @@ module ir_FSM(
 							shift_register[23:20] ^ shift_register[31:28] == 4'hF)
 							
 							begin
-								data_count <= 0;
+								//data_count <= 0;
 								
 								//outputs 16-bits, ignoring the complement of the nibble counterparts
 								ir_data_array[3:0] = shift_register[3:0];
@@ -141,7 +142,7 @@ module ir_FSM(
 								ir_data_array[15:12] = shift_register[23:20];
 
 		
-								nextstate <= IDLE;
+								nextstate <= REPEAT;
 								
 								
 							end	
@@ -156,6 +157,35 @@ module ir_FSM(
 						
 						
 					end	
+					
+					
+				REPEAT:
+					begin
+						if(ir_data)
+							begin
+								if(counter >= 1000)
+									nextstate <= IDLE;
+								else if(counter >= 600)
+									begin
+										counter <= 0;
+										nextstate <= COLLECT;
+										
+									end
+								
+							end
+						else
+							begin
+								if(counter >= 1000)
+									nextstate <= IDLE;
+								else
+									begin
+										counter <= counter + 1;
+										nextstate <= REPEAT;
+									end
+							end
+						
+						
+					end
 					
 				
 				default: nextstate <= IDLE;
