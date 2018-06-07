@@ -77,7 +77,7 @@ module ir_FSM(
 								counter <= counter + 1;
 								nextstate <= START;
 							end
-						else if(~ir_data && counter > 18)
+						else if(~ir_data && counter > 10)
 							begin
 								counter <= 0;
 								data_count <= 0;
@@ -91,27 +91,6 @@ module ir_FSM(
 				//based on the length of the count
 				COLLECT:
 					begin
-				/*	if(ir_data)
-						begin
-							counter <= counter + 1;
-							nextstate <= COLLECT;
-						end
-					else 
-						begin
-							if(counter >= 12 && counter < 24)
-								begin
-									counter <= 0;
-									shift_register <= {shift_register[30:0], 1'b1};
-									data_count <= data_count + 1;
-								end
-							else if (counter > 6 && counter < 11)
-								begin
-									counter <= 0;
-									shift_register <= {shift_register[30:0], 1'b0};
-									data_count <= data_count + 1;
-								end
-							*/
-							//checks to see if the shift register has 32-bits of data
 							if(data_count == 32)
 								nextstate <= VERIFY;
 							else
@@ -125,7 +104,7 @@ module ir_FSM(
 					else 
 						begin
 							counter <= 0;
-							if(counter >= 12 && counter < 27)
+							if(counter >= 12 && counter <= 30)
 								begin
 									counter <= 0;
 									shift_register <= {shift_register[30:0], 1'b1};
