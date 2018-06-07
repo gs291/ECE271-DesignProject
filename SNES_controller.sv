@@ -6,20 +6,27 @@
 * Project Name: ECE 271 Final Project
 * Team Number: 09
 *
-* Description: Button Board Decoder
+* Description: Data Input Multiplexer
 * Start Date: 06/03/2018
 *
 ****************************************/
 
-module mux2( 	input logic [15:0] keyboard_data, button_data,
-				input logic sel,
-				output logic [15:0] SNES_data);
-				
+module mux3(
+							input logic [15:0] keyboard_data, button_data, ir_data,
+							input logic [1:0] sel,
+
+							output logic [15:0] SNES_data);
+
+//This sends the current data input to the translator
 always_comb
 	begin
 		case(sel)
-			1'b0: SNES_data = keyboard_data;
-			1'b1: SNES_data = button_data;
-			
+			2'b00: SNES_data = ir_data;
+			2'b01: SNES_data = keyboard_data;
+			2'b10: SNES_data = button_data;
+
 			default: SNES_data = 0;
+		endcase
 	end
+	
+endmodule 

@@ -10,18 +10,16 @@ int main()
 {
 	ifstream input("test.txt"); //use data from file: "StudentData.txt"
 
-	int start = 0;
 	bool test = true;
-	double time, ch2; //x is the score
+	double time, ch1, ch2; //x is the score
 
 	double time0 = 0; 
 	double time1 = 0;
 
-	double count = 0;
-
 	while (!input.eof()) { //keep looping untill end of file
-
-						   //get first name, last name, and score for the line
+		/*
+		//Uncomment this section to get the values 
+		//for the IR decoder for the time length for each 0
 		input >> time >> ch2;
 
 		if (ch2 > 3 && test == true)
@@ -42,7 +40,27 @@ int main()
 			//cout << "Time:" << time << " with value of " << ch2 << endl;
 			test = true;
 		}
+		*/
+
+
+
+		/*
+		//Uncomment this section to get the values
+		//for the PS2 decoder on each falling edge of the clock
+		input >> time >> ch1 >> ch2;
+
+		if (ch1 > 3 && test == true)
+		{
+		test = false;
+		}
+		else if (ch1 < 0.5 && test == false)
+		{
+		cout << "Time:" << time << " with value of " << ch2 << endl;
+		test = true;
+		}
+		*/
 	}
+	
 
 
 	cin.clear();
