@@ -28,6 +28,7 @@ module button_decoder(
 	parameter left = 8'b10111111;
 	parameter right = 8'b01111111;
 	parameter A = 8'b01111110;
+	parameter X = 8'b01111101;
 
 
 always_comb
@@ -44,6 +45,7 @@ always_comb
 			left: button_data = 16'b1111111110111111;
 			right: button_data = 16'b1111111101111111;
 			A: button_data = 16'b1111111011111111;
+			X: buttond_data = 16'b1111110111111111;
 		
 		endcase
 	
