@@ -6,8 +6,8 @@
 * Project Name: ECE 271 Final Project
 * Team Number: 09
 *
-* Description: Button Board Decoder
-* Start Date: 06/03/2018
+* Description: IR Remote Decoder
+* Start Date: 06/05/2018
 *
 ****************************************/
 module ir_decoder(
