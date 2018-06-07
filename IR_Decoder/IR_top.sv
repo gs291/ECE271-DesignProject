@@ -20,20 +20,20 @@ module IR_top(
 	logic [15:0] ir_data_array;
 	
 clock_counter divider(
+	.reset(reset)
 	.clk_in(osc_clk),
-	.clk_out(slow_clk)
+	.slow_clk(slow_clk)
 );
 
 ir_FSM IR_data_collection(
 	.reset(reset),
-	.ir_data(ir_data),
-	.slow_clk(),
+	.ir_data(ir_input_data),
+	.slow_clk(slow_clk),
 	.ir_data_array(ir_data_array)
 );
 
 ir_decoder IR_data_decoder(
 	.ir_data_in(ir_data_array),
-    .clk(),
     .ir_data_out(IR_output_value)
 );
 
