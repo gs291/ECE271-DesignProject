@@ -12,7 +12,8 @@
 ****************************************/
 module SNES_Top(
 input logic [7:0] buttons,
-input logic ps2_keypress, sel, ps2_clk,
+input logic [1:0] sel,
+input logic ps2_keypress, ps2_clk, reset,
 output logic [15:0] data_out
 );
 
@@ -38,18 +39,19 @@ output logic [15:0] data_out
 		.keyboard_data(ps2_data),
 		.button_data(button_data),
 		.sel(sel),
-		.SNES_data(data_out),
+		.SNES_data(data_out)
 	);
 
 	button_board_Top button_board(
 		.buttons(buttons),
-		.button_data(button_data),
+		.button_data(button_data)
 	);
 
 	ps2_Top ps2_keyboard(
-		.clk(ps2_clk),
+		.reset(reset),
+		.clk_15khz(ps2_clk),
 		.ps2_data_in(ps2_keypress),
-		.ps2_data_out(ps2_data),
+		.ps2_data_out(ps2_data)
 	);
 
 endmodule
