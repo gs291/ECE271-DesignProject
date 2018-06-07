@@ -8,7 +8,7 @@ force -deposit /ps2_Top/clk_15khz 1 0, 0 {50 ns} -repeat 100
 #reset at begin
 force /ps2_Top/reset 1 @ 100, 0 @ 200
 
-#keep sending 1 af begin
+#keep sending 1 at begin
 force /ps2_Top/ps2_data_in 1 @ 340
 
 #code of s(1C) 0 0011 1000 0 1
