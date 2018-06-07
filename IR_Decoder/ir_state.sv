@@ -19,9 +19,7 @@ module ir_FSM(
 	
 	);
 	
-	//logic [7:0] clock_counter;
-	//logic clk;
-	//logic slow_clk;
+
 	
 	logic [10:0] counter;
 	
@@ -31,46 +29,27 @@ module ir_FSM(
 	
 	typedef enum logic [2:0] {IDLE, START, COLLECT, VERIFY, REPEAT} statetype;
 	statetype [2:0] state, nextstate;
-	
-	//internal clock divider
-	/*OSCH #("2.08") osc_int (	
-		.STDBY(1'b0),			
-		.OSC(clk),				
-		.SEDSTDBY()				
-	);	
-	
-	always_ff @ (posedge clk, posedge reset)
-	begin
-		if(reset) clock_counter <= 0;
-		else	  clock_counter <= clock_counter + 1;
-	end
-	
-	assign slow_clk = clock_counter[6];
-	
-	*/
-	
-	//always_ff @ (posedge slow_clk)
+
 	always_comb
 		state <= nextstate;
 		
-		
-	//always_comb
 	always_ff @ (posedge slow_clk)
 		begin
 			
 			case(state)
 				
-				//checks to see if the start signal is initiated
-				//if initiated, state machine will transition to the collect state
 				
+				//instantiate and resets needed internal variables for counting IR signal
 				IDLE:
 					begin
-						ir_data_array = 16'h0000;
+						ir_data_array = 16'h0000;  //initially instantiate output to 4'h0000
 						counter <= 0;
 						nextstate <= START;
 						
 					end
 				
+				//checks to see if the start signal is initiated
+				//if initiated, state machine will transition to the collect state
 				START:
 					begin
 						if(ir_data) 
@@ -158,10 +137,11 @@ module ir_FSM(
 						
 					end	
 					
-					
+				//waits for the repeat signal to repeat the output to the IR decoder
+				//if there is no repeat signal, then go to idle
 				REPEAT:
 					begin
-						if(ir_data)
+						if(ir_data)   //checks ir_data to see if high, then checks the wait count for low ir_signal
 							begin
 								if(counter >= 1000)
 									nextstate <= IDLE;
@@ -175,7 +155,7 @@ module ir_FSM(
 							end
 						else
 							begin
-								if(counter >= 1000)
+								if(counter >= 1000)   //if too long of low signal, then reset to beginning for new ir signal
 									nextstate <= IDLE;
 								else
 									begin
