@@ -1,0 +1,143 @@
+Time 4e-06 of 3.15
+
+Time 0.00151 of 0.07
+
+Time 0.00502 of 3.17
+
+Time 0.00596 of 0.09
+
+Time 0.00728 of 3.07
+
+Time 0.00784 of 0.11
+
+Time 0.00843 of 3.17
+
+Time 0.00946 of 0.07
+
+Time 0.0107 of 3.13
+
+Time 0.0112 of 0.09
+
+Time 0.0118 of 3.19
+
+Time 0.0128 of 0.05
+
+Time 0.0141 of 3.13
+
+Time 0.0147 of 0.13
+
+Time 0.0152 of 3.09
+
+Time 0.0158 of 0.09
+
+Time 0.0164 of 3.21
+
+Time 0.017 of 0.09
+
+Time 0.0176 of 3.09
+
+Time 0.0181 of 0.05
+
+Time 0.0187 of 3.17
+
+Time 0.0197 of 0.09
+
+Time 0.021 of 3.13
+
+Time 0.0215 of 0.05
+
+Time 0.0221 of 3.01
+
+Time 0.0231 of 0.07
+
+Time 0.0244 of 3.17
+
+Time 0.0249 of 0.05
+
+Time 0.0255 of 3.05
+
+Time 0.0265 of 0.07
+
+Time 0.0278 of 3.19
+
+Time 0.0287 of 0.25
+
+Time 0.03 of 3.09
+
+Time 0.0309 of 0.11
+
+Time 0.0323 of 3.11
+
+Time 0.0332 of 0.05
+
+Time 0.0346 of 3.07
+
+Time 0.0355 of 0.09
+
+Time 0.0368 of 3.13
+
+Time 0.0374 of 0.09
+
+Time 0.038 of 3.11
+
+Time 0.0389 of 0.11
+
+Time 0.0402 of 3.21
+
+Time 0.0408 of 0.07
+
+Time 0.0414 of 3.15
+
+Time 0.0419 of 0.09
+
+Time 0.0425 of 3.07
+
+Time 0.0431 of 0.05
+
+Time 0.0437 of 3.17
+
+Time 0.0443 of 0.13
+
+Time 0.0448 of 3.09
+
+Time 0.0454 of 0.05
+
+Time 0.046 of 3.15
+
+Time 0.0465 of 0.09
+
+Time 0.0471 of 3.13
+
+Time 0.048 of 0.13
+
+Time 0.0494 of 3.03
+
+Time 0.05 of 0.09
+
+Time 0.0505 of 3.19
+
+Time 0.0514 of 0.09
+
+Time 0.0528 of 3.05
+
+Time 0.0536 of 0.07
+
+Time 0.0551 of 3.17
+
+Time 0.0559 of 0.09
+
+Time 0.0573 of 3.09
+
+Time 0.0582 of 0.07
+
+Time 0.0596 of 3.17
+
+Time 0.0604 of 0.19
+
+Time 0.111 of 3.09
+
+Time 0.112 of 0.07
+
+Time 0.114 of 3.01
+
+Time 0.114 of 0.07
