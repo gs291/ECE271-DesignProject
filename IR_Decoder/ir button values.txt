@@ -3,3 +3,8 @@ button 1: 0101011101111111 (577F)
 button 2: 0101011110111111 (57BF)
 button 3: 0101011100111111 (573F)
 button 4: 0101011111011111 (57DF)
+button 5: 575F
+button 6: 579F
+button 7: 571F
+button 8: 57EF
+button 9: 576F
