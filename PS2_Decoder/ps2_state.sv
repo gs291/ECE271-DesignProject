@@ -24,14 +24,14 @@ module FSM(
 	logic [7:0] shift_register;		//shift register to store the 8-bit PS/2 data
 	logic parity;					//the 10th bit from the 11-bit input of the PS/2
 	
-	typedef enum logic [2:0]{IDLE, START, COLLECT, VERIFY, STOP} statetype;
+	typedef enum logic [2:0]{START, IDLE, COLLECT, VERIFY, STOP} statetype;
 	statetype [2:0] state, nextstate;
 	
 	
 	
 	always_comb
 		begin
-			if(reset) state <= IDLE;
+			if(reset) state <= START;
 			else 	  state <= nextstate;
 		end		
 
@@ -40,7 +40,15 @@ module FSM(
 			
 			case(state)
 			
-				//idle state to wait for the clk signal
+				//initial decoder to ffff
+				START:
+				
+					begin
+						ps2_data_array <= 8'h00;
+						nextstate <= IDLE;
+					end
+			
+				//idle state to wait for the clk signal, checks if the first PS/2 signal is 0
 				IDLE: 
 					begin
 						counter <= 0;
@@ -48,14 +56,6 @@ module FSM(
 						if(~ps2_keypress) nextstate <= COLLECT;
 						else			  nextstate <= IDLE;
 						//nextstate <= START;
-					end
-				
-				//checks if the first PS/2 signal is 0
-				START:
-				
-					begin
-						if(~ps2_keypress) nextstate <= COLLECT;
-						else			  nextstate <= IDLE;
 					end
 				
 				//collects the 8-bits of information based on the keypress

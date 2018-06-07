@@ -1,15 +1,4 @@
 vsim work.FSM
-add wave *
-
-force -deposit /clk 1 0, 0 {50 ns} -repeat 100
-force reset 1 @ 10, 0 @ 20
-force ps2_keypress 0 @ 40, 1 @ 80, 0 @ 160, 1 @ 240, 0 @ 290, 1 @ 305, 0 @ 370, 1 @ 460, 0 @ 530, 1 @ 590, 0 @ 670, 1 @ 690, 0 @ 740, 1 @ 790, 0 @ 860, 1 @ 910, 0 @ 1010, 1 @ 1105, 0 @ 1210, 1 @ 1340, 0 @ 1410, 1 @ 1530, 0 @ 1670, 1 @ 1720, 0 @ 1860
-
-run 1900
-
-
-
-vsim work.FSM
 
 add wave *
 
@@ -17,7 +6,7 @@ add wave *
 force -deposit /FSM/clk 1 0, 0 {50 ns} -repeat 100
 
 #reset at begin
-force /FSM/reset 1 @ 10, 0 @ 20
+force /FSM/reset 1 @ 100, 0 @ 200
 
 #keep sending 1 af begin
 force /FSM/ps2_keypress 1 @ 340

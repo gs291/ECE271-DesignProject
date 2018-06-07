@@ -6,7 +6,7 @@ add wave *
 force -deposit /ps2_Top/clk_15khz 1 0, 0 {50 ns} -repeat 100
 
 #reset at begin
-force /ps2_Top/reset 1 @ 10, 0 @ 20
+force /ps2_Top/reset 1 @ 100, 0 @ 200
 
 #keep sending 1 af begin
 force /ps2_Top/ps2_data_in 1 @ 340
@@ -18,10 +18,10 @@ force /ps2_Top/ps2_data_in 0 @ 740, 1 @ 1040, 0 @ 1340, 1 @ 1740
 force /ps2_Top/ps2_data_in 0 @ 3040, 1 @ 3140, 0 @ 3340, 1 @ 3440, 0 @ 3640, 1 @ 3940
 
 #code of F0 0 0000 1111 1 1
-force /ps2_Top/ps2_data_in 0 @ 4640, 1 @ 5140
+force /ps2_Top/ps2_data_in 0 @ 4540, 1 @ 5040
 
 #code of a(1B) 0 1101 1000 1 1
-force /ps2_Top/ps2_data_in 0 @ 6040, 1 @ 6140, 0 @ 6340, 1 @ 6440, 0 @ 6640, 1 @ 6940
+force /ps2_Top/ps2_data_in 0 @ 5740, 1 @ 5840, 0 @ 6040, 1 @ 6140, 0 @ 6340, 1 @ 6640
 
 #code of F0 0 0000 1111 1 1
 force /ps2_Top/ps2_data_in 0 @ 8740, 1 @ 9240
