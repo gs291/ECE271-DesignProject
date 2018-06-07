@@ -26,4 +26,7 @@ always_comb
 			2'b10: SNES_data = button_data;
 
 			default: SNES_data = 0;
+		endcase
 	end
+	
+endmodule 

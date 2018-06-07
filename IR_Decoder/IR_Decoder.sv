@@ -14,7 +14,7 @@ module ir_decoder(
     input logic [31:0] ir_data_in,
     input logic clk,
 
-    output logic [15:0] ir_ir_data_outut
+    output logic [15:0] ir_data_out
 );
 
 always_comb 

@@ -17,7 +17,11 @@ module Ps2_decoder(
     output logic [15:0] key_data_out
 );
 
+<<<<<<< HEAD
 logic key_fo;
+=======
+logic key_fo, start_key;
+>>>>>>> e4b7f01f2617dba9263e654e9e253d017ad28f95
 
 logic initialize;
 
@@ -66,6 +70,7 @@ always_comb
                 8'h2B: key_data_out[7] = 1'b0; // f for select
                 8'h34: key_data_out[8] = 1'b0; // g for X
                 8'h35: key_data_out[9] = 1'b0; // y for Y
+                default: key_data_out = 16'b1111111111111111;
             endcase
         end
 

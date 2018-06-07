@@ -11,12 +11,12 @@
 *
 ****************************************/
 module button_board_Top(
-input logic [7:0] buttons
+input logic [7:0] buttons,
 output logic [15:0] button_data
 );
 
-	button_decoder(
-	.buttons(buttons),
+	button_decoder button_to_onehot(
+	.button(buttons),
 	.button_data(button_data)
 	);
 	

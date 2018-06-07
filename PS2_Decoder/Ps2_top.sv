@@ -11,20 +11,22 @@
 *
 ****************************************/
 module ps2_Top(
-input logic ps2_data_in, clk_15khz,
+input logic ps2_data_in, clk_15khz, reset,
 output logic [15:0] ps2_data_out
 );
 
-logic [7:0} ps2_data_array;
+logic [7:0] ps2_data_array;
 
 	FSM ps2_FSM(
 	.clk(clk_15khz),
 	.ps2_keypress(ps2_data_in),
+	.reset(reset),
+	.ps2_data_array(ps2_data_array)
 	);
 	
-	decoder ps2_decoder(
-	.key_byte(ps2_data_array);
-	.key_data_output(ps2_data_out);
+	Ps2_decoder decoder(
+	.key_byte(ps2_data_array),
+	.key_data_out(ps2_data_out)
 	);
 
 	

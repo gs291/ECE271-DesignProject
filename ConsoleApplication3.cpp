@@ -1,4 +1,5 @@
-#include "stdafx.h"
+#include <stdio.h>
+#include <tchar.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,14 +23,20 @@ int main()
 		input >> time >> ch2;
 
 		if (ch2 > 3 && test == true)
-		{
-			cout << "Time difference of: " << (time - time0) << endl;
+		{	
+			cout << "Time " << time << " of " << ch2 << endl;
 			cout << endl;
+			//cout << "Time difference of 1: " << time << " - 0: " << time0 << " is : " << (time - time0) << endl;
+			//cout << endl;
 			test = false;
 		}
 		else if (ch2 < 0.5 && test == false)
 		{
 			time0 = time;
+			cout << "Time " << time0 << " of " << ch2 << endl;
+			cout << endl;
+			//cout << "Time difference of 0: " << time << " - 1: " << time0 << " is : " << (time - time0) << endl;
+			//cout << endl;
 			//cout << "Time:" << time << " with value of " << ch2 << endl;
 			test = true;
 		}
