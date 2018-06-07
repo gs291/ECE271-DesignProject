@@ -44,6 +44,7 @@ module FSM(
 				IDLE: 
 					begin
 						counter <= 0;
+						ps2_data_array <= 8'hff;
 						nextstate <= START;
 					end
 				
