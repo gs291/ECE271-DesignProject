@@ -3,6 +3,7 @@
 #execpt any sv files
 !*.sv
 !*.txt
+!*.do
 !/IR_Decoder/
 !/PS2_Decoder/
 !/Button_Decoder/
