@@ -2,6 +2,10 @@
 
 **_Only add SystemVerilog files to the repository._**
 
+## Scope
+
+The scope of this project was to simulate a SNES controller button inputs (B, Y, Select, Start, Up, Down, Left, Right, A, X) using a TV remote, PS/2 Keyboard, or an 8-push button board. 
+
 ## Desingers
 
 Matthew Guo, Haolin Liu, Cody McCall, Gregory Sanchez
