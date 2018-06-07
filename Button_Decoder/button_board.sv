@@ -45,7 +45,7 @@ always_comb
 			left: button_data = 16'b1111111110111111;
 			right: button_data = 16'b1111111101111111;
 			A: button_data = 16'b1111111011111111;
-			X: buttond_data = 16'b1111110111111111;
+			X: button_data = 16'b1111110111111111;
 		
 		endcase
 	
