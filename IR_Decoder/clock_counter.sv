@@ -1,4 +1,6 @@
 module clock_counter(
+
+	input logic reset,
 	output logic slow_clk
 );
 
