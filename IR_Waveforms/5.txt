@@ -1,0 +1,67 @@
+Time difference of 0: 0.00102 - 1: -1e-15 is : 0.00102
+
+Time difference of 0: 0.00582 - 1: 0.00502 is : 0.0008
+
+Time difference of 0: 0.00784 - 1: 0.00728 is : 0.00056
+
+Time difference of 0: 0.00928 - 1: 0.00843 is : 0.00085
+
+Time difference of 0: 0.0112 - 1: 0.0107 is : 0.0005
+
+Time difference of 0: 0.0127 - 1: 0.0118 is : 0.0009
+
+Time difference of 0: 0.0147 - 1: 0.0141 is : 0.0006
+
+Time difference of 0: 0.0158 - 1: 0.0152 is : 0.0006
+
+Time difference of 0: 0.017 - 1: 0.0164 is : 0.0006
+
+Time difference of 0: 0.0181 - 1: 0.0175 is : 0.0006
+
+Time difference of 0: 0.0196 - 1: 0.0187 is : 0.0009
+
+Time difference of 0: 0.0215 - 1: 0.021 is : 0.0005
+
+Time difference of 0: 0.023 - 1: 0.0221 is : 0.0009
+
+Time difference of 0: 0.0249 - 1: 0.0244 is : 0.0005
+
+Time difference of 0: 0.0264 - 1: 0.0255 is : 0.0009
+
+Time difference of 0: 0.0286 - 1: 0.0278 is : 0.0008
+
+Time difference of 0: 0.0309 - 1: 0.03 is : 0.0009
+
+Time difference of 0: 0.0332 - 1: 0.0323 is : 0.0009
+
+Time difference of 0: 0.0351 - 1: 0.0346 is : 0.0005
+
+Time difference of 0: 0.0366 - 1: 0.0357 is : 0.0009
+
+Time difference of 0: 0.0385 - 1: 0.038 is : 0.0005
+
+Time difference of 0: 0.0397 - 1: 0.0391 is : 0.0006
+
+Time difference of 0: 0.0408 - 1: 0.0403 is : 0.0005
+
+Time difference of 0: 0.042 - 1: 0.0414 is : 0.0006
+
+Time difference of 0: 0.0431 - 1: 0.0426 is : 0.0005
+
+Time difference of 0: 0.0443 - 1: 0.0437 is : 0.0006
+
+Time difference of 0: 0.0458 - 1: 0.0449 is : 0.0009
+
+Time difference of 0: 0.0477 - 1: 0.0471 is : 0.0006
+
+Time difference of 0: 0.0492 - 1: 0.0483 is : 0.0009
+
+Time difference of 0: 0.0514 - 1: 0.0505 is : 0.0009
+
+Time difference of 0: 0.0537 - 1: 0.0528 is : 0.0009
+
+Time difference of 0: 0.0559 - 1: 0.0551 is : 0.0008
+
+Time difference of 0: 0.0582 - 1: 0.0573 is : 0.0009
+
+Time difference of 0: 0.0605 - 1: 0.0596 is : 0.0009
