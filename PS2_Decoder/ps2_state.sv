@@ -45,7 +45,9 @@ module FSM(
 					begin
 						counter <= 0;
 						ps2_data_array <= 8'hff;
-						nextstate <= START;
+						if(~ps2_keypress) nextstate <= COLLECT;
+						else			  nextstate <= IDLE;
+						//nextstate <= START;
 					end
 				
 				//checks if the first PS/2 signal is 0
