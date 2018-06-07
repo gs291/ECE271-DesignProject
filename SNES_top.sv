@@ -19,7 +19,8 @@ output logic [15:0] data_out
 	logic clk;
 	logic [15:0] button_data;
 	logic [15:0] ps2_data;
-	
+	logic [15:0] ir_data;
+
 /*			//This is an instance of a special, built in module that accesses our chip's oscillator
 	OSCH #("2.08") osc_int (	//"2.08" specifies the operating frequency, 2.08 MHz.
 								//Other clock frequencies can be found in the MachX02's documentation
@@ -31,23 +32,24 @@ output logic [15:0] data_out
 	.clk_i(clk)
 	.clk_slow(clk_15khz)
 	);*/
-	
-	mux2 SNES_controller(
-	.keyboard_data(ps2_data)
-	.button_data(button_data)
-	.sel(sel)
-	.SNES_data(data_out)
+
+	mux3 SNES_controller(
+		.ir_data(ir_data),
+		.keyboard_data(ps2_data),
+		.button_data(button_data),
+		.sel(sel),
+		.SNES_data(data_out),
 	);
-	
+
 	button_board_Top button_board(
-	.buttons(buttons)
-	.button_data(button_data)
+		.buttons(buttons),
+		.button_data(button_data),
 	);
-	
+
 	ps2_Top ps2_keyboard(
-	.clk(ps2_clk)
-	.ps2_data_in(ps2_keypress)
-	.ps2_data_out(ps2_data)
+		.clk(ps2_clk),
+		.ps2_data_in(ps2_keypress),
+		.ps2_data_out(ps2_data),
 	);
-	
-endmodule 
+
+endmodule
