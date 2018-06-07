@@ -1,3 +1,16 @@
+/***************************************
+* Affiliation: Oregon State University
+* Author: Gregory Sanchez
+*
+* Course: ECE 271 - Digital Logic Design
+* Project Name: ECE 271 Final Project
+* Team Number: 09
+*
+* Description: Serially outputs the button input(s) to
+*               to the SNES console using a shift register
+* Start Date: 06/03/2018
+*
+****************************************/
 module translator(input logic [15:0] data,
                   input logic SNES_latch,
                   input logic reset,

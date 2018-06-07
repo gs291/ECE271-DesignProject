@@ -21,12 +21,12 @@ module mux3(
 always_comb
 	begin
 		case(sel)
-			2'b00: SNES_data = ir_data;
-			2'b01: SNES_data = keyboard_data;
-			2'b10: SNES_data = button_data;
+			2'b00: SNES_data = keyboard_data;
+			2'b01: SNES_data = button_data;
+			2'b10: SNES_data = ir_data;
 
 			default: SNES_data = 0;
 		endcase
 	end
-	
-endmodule 
+
+endmodule
