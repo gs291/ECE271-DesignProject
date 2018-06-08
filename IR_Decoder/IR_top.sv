@@ -18,28 +18,13 @@ module IR_top(
 
 	logic slow_clk;
 	logic [15:0] ir_data_array;
-<<<<<<< HEAD
-	
-clock_counter divider(
-	.reset(reset),
-	.clk_in(osc_clk),
-	.slow_clk(slow_clk)
-);
-=======
->>>>>>> 3d723bce703cf21074c383bea8bc8ec7cedc1f29
 
 
-<<<<<<< HEAD
-ir_decoder IR_data_decoder(
-	.ir_data_in(ir_data_array),
-    .ir_data_out(IR_output_value)
-);
-=======
 	//This module is instantiated from different file, 'clock_counter.sv'
 	//It will take an input 2 MHz clock, and reset
 	//output the  slowed clock
 	clock_counter divider(
-		.reset(reset)
+		.reset(reset),
 		.clk_in(osc_clk),
 		.slow_clk(slow_clk)
 	);
@@ -61,6 +46,5 @@ ir_decoder IR_data_decoder(
 		.ir_data_in(ir_data_array),
 	    .ir_data_out(IR_output_value)
 	);
->>>>>>> 3d723bce703cf21074c383bea8bc8ec7cedc1f29
 
 endmodule
