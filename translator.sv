@@ -16,7 +16,9 @@ always_ff @(negedge SNES_clk, posedge SNES_latch, posedge reset)
 		else
 			shift_register <= {shift_register[14:0], 1'bz};
 
-		assign SNES_data = shift_register[15];
+		
 	end
+	
+	assign SNES_data = shift_register[15];
 	
 endmodule

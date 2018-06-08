@@ -20,7 +20,7 @@ module IR_top(
 	logic [15:0] ir_data_array;
 	
 clock_counter divider(
-	.reset(reset)
+	.reset(reset),
 	.clk_in(osc_clk),
 	.slow_clk(slow_clk)
 );
