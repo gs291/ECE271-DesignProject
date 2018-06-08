@@ -20,6 +20,9 @@ module translator(input logic [15:0] data,
 logic send_data;
 logic [3:0] count;
 
+
+//On the first and only rising edge of the
+//SNES_latch allow the clock to send data to the SNES
 always_ff @ (posedge SNES_latch)
 if(SNES_latch)
   begin
@@ -27,6 +30,8 @@ if(SNES_latch)
     count <= 15;
   end
 
+//On every falling edge of the SNES_clock send values
+//For the button presses to the SNES. 
 always_ff @(negedge SNES_clk,posedge reset)
 begin
   if(reset)

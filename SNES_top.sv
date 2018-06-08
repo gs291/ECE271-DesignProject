@@ -23,26 +23,34 @@ output logic [15:0] data_out
 	logic [15:0] ir_data;
 	logic [15:0] one_hot_data;
 
-
+	//This module is instantiated from different file, 'ps2_state.sv'
+	//It will take an input slowed clock, serially inputed key pressed data values, and a reset
+	//output the key presses as a 8-bit bus.
 	OSCH #("2.08") osc_int (	//2.08 Mhz FPGA oscillator
-								
-		.STDBY(1'b0),			
-		.OSC(clk),		        //output connected to clk net		
-		.SEDSTDBY());	
+
+		.STDBY(1'b0),
+		.OSC(clk),		        //output connected to clk net
+		.SEDSTDBY());
 
 	/*clk_counter(
 	.clk_i(clk)
 	.clk_slow(clk_15khz)
 	);*/
 
-	mux3 SNES_controller(                 //SNES_controller switches between the 3 different input devices
+	//This module is instantiated from different file, 'SNES_controller.sv'
+	//It will take IR data, PS/2 data, button board data, and a selector driven by an outside switch
+	//output the data for the wanted source of data to the SNES console.
+	mux3 SNES_controller(
 		.ir_data(ir_data),
 		.keyboard_data(ps2_data),
 		.button_data(button_data),
 		.sel(sel),
 		.SNES_data(one_hot_data)
 	);
-	
+
+	//This module is instantiated from different file, 'translator.sv'
+	//It will take an SNES compatible data button input, SNES given latch and clock, and reset
+	//output the button presses serially to the SNES console
 	translator SNES_converter(
 		.data(one_hot_data),
 		.SNES_latch(SNES_latch),
@@ -62,12 +70,12 @@ output logic [15:0] data_out
 		.ps2_data_in(ps2_keypress),       //data signal from PS2
 		.ps2_data_out(ps2_data)           //16-bit one-hot output value
 	);
-	
+
 	IR_top IR_sensor(                     //module to control processing and reading of IR value
 	.reset(reset),                        //reset for FSM
 	.ir_input_data(ir_input_data),        //Input signal from IR sensor
 	.osc_clk(clk),                        //Oscillator clock signal @ 2.08 Mhz
 	.IR_output_value(ir_data)             //16-bit one-hot encoded output value
 	);
-	
+
 endmodule
