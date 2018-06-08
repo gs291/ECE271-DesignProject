@@ -38,23 +38,22 @@ always_comb
             begin
                 //The button that was let go will be assigned to HIGH
                 //if the break code was sent prior to this key_byte
-                if (key_byte_op != 8'hff)
-                    begin
-                        case(key_byte_op)
-                            8'h2D: key_data_out[15] = 1'b1; // r for B
-                            8'h35: key_data_out[14] = 1'b1; // y for Y
-                            8'h2B: key_data_out[13] = 1'b1; // f for select
-                            8'h2C: key_data_out[12] = 1'b1; // t for start
-                            8'h1d: key_data_out[11] = 1'b1; // w for up
-                            8'h1B: key_data_out[10] = 1'b1; // s for down
-                            8'h1C: key_data_out[9] = 1'b1; // a for left
-                            8'h23: key_data_out[8] = 1'b1; // d for right
-                            8'h24: key_data_out[7] = 1'b1; // e for A
-                            8'h34: key_data_out[6] = 1'b1; // g for X
-                        endcase
+                case(key_byte_op)
+                    8'h2D: key_data_out[15] = 1'b1; // r for B
+                    8'h35: key_data_out[14] = 1'b1; // y for Y
+                    8'h2B: key_data_out[13] = 1'b1; // f for select
+                    8'h2C: key_data_out[12] = 1'b1; // t for start
+                    8'h1d: key_data_out[11] = 1'b1; // w for up
+                    8'h1B: key_data_out[10] = 1'b1; // s for down
+                    8'h1C: key_data_out[9] = 1'b1; // a for left
+                    8'h23: key_data_out[8] = 1'b1; // d for right
+                    8'h24: key_data_out[7] = 1'b1; // e for A
+                    8'h34: key_data_out[6] = 1'b1; // g for X
+					8'h16: key_data_out[5] = 1'b0; // 1 for R
+					8'h25: key_data_out[4] = 1'b0; // 4 for L
+                endcase
 
-                        key_fo = 0;
-                    end
+                key_fo = 0;
 
             end
         else
@@ -71,8 +70,9 @@ always_comb
                     8'h23: key_data_out[8] = 1'b0; // d for right
                     8'h24: key_data_out[7] = 1'b0; // e for A
                     8'h34: key_data_out[6] = 1'b0; // g for X
-                    8'h00: key_data_out = 16'b1111111111111111;
-                    //default: key_data_out = 16'b1111111111111111;
+					8'h16: key_data_out[5] = 1'b0; // 1 for R
+					8'h25: key_data_out[4] = 1'b0; // 4 for L
+                    default: key_data_out = 16'b1111111111111111;
                 endcase
             end
     end
