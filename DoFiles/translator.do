@@ -2,9 +2,12 @@ vsim -gui work.translator
 
 add wave *
 
-force /translator/SNES_latch 0 0 ms, 1 6 ms, 0 12 ms
-force /translator/SNES_clk 0 6 ms, 1 12 ms -repeat 12 ms
+force /translator/SNES_latch 1 0 us, 0 12 us
+force /translator/SNES_clk 1 @ 0us
+force /translator/data 2#1010_1111_1111_1111
 
-force /translator/data 2#0111_1111_1111_1111 3 ms
+run 15 ms
 
-run 200 ms
+force /translator/SNES_clk 0 0us, 1 6us -r 12us
+
+run 180ms

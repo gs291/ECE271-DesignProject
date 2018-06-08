@@ -34,22 +34,21 @@ module button_decoder(
 always_comb
 	begin
 		case(button)
-		
-			idle: button_data = 16'b1111111111111111;
-			B: button_data = 16'b1111111111111110;
-			Y: button_data = 16'b1111111111111101;
-			start: button_data = 16'b1111111111111011;
-			select: button_data = 16'b1111111111110111;
-			up: button_data = 16'b1111111111101111;
-			down: button_data = 16'b1111111111011111;
-			left: button_data = 16'b1111111110111111;
-			right: button_data = 16'b1111111101111111;
-			A: button_data = 16'b1111111011111111;
-			X: button_data = 16'b1111110111111111;
-		
+			idle: button_data = 		16'b1111111111111111;
+			B: button_data = 				16'b0111111111111111;
+			Y: button_data = 				16'b1011111111111111;
+			start: button_data = 		16'b1101111111111111;
+			select: button_data = 	16'b1110111111111111;
+			up: button_data = 			16'b1111011111111111;
+			down: button_data = 		16'b1111101111111111;
+			left: button_data = 		16'b1111110111111111;
+			right: button_data = 		16'b1111111011111111;
+			A: button_data = 				16'b1111111101111111;
+			X: button_data = 				16'b1111111110111111;
+
 		endcase
-	
-		
+
+
 	end
 
 endmodule
